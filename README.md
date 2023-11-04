@@ -2,6 +2,11 @@
 
 A flutter project based on Ia thanks to MLKit
 
+## Branching strategy 
+
+I will use GitFlow branching strategy for this project. (https://datasift.github.io/gitflow/IntroducingGitFlow.html)
+![image](https://github.com/Schtroumphy/liam_game/assets/42738178/80584569-f9ae-4972-8464-52df41da505f)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
