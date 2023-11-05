@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:liam_game/features/digital_ink_recognition/digital_ink_screen.dart';
+import 'package:liam_game/game_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,10 +14,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        fontFamily: "IndieFlower",
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const DigitalInkScreen(),
+      debugShowCheckedModeBanner: false,
+      home: const GameScreen(),
     );
   }
 }

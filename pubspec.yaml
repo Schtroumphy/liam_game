@@ -53,6 +53,16 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  fonts:
+    - family: IndieFlower
+      fonts:
+        - asset: assets/fonts/IndieFlower-Regular.ttf
+    - family: ZenLoop
+      fonts:
+          - asset: assets/fonts/ZenLoop-Regular.ttf
+          - asset: assets/fonts/ZenLoop-Italic.ttf
+            style: italic
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

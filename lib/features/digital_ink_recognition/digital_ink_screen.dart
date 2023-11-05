@@ -1,6 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide Ink;
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
+import 'package:liam_game/style/colors.dart';
+import 'package:liam_game/widgets/rounded_box.dart';
 
 import 'activity_indicator.dart';
 
@@ -29,7 +30,7 @@ class _DigitalInkScreenState extends State<DigitalInkScreen> {
     'zh-Hani',
   ];
 
-  /* 1. Create an instance of DigitalInkRecognizer DigitalInkRecognizerModelManager &  */
+  /* 1. Create an instance of DigitalInkRecognizer & DigitalInkRecognizerModelManager  */
   var _digitalInkRecognizer = DigitalInkRecognizer(languageCode: "en");
   final _modelManager = DigitalInkRecognizerModelManager();
 
@@ -49,6 +50,7 @@ class _DigitalInkScreenState extends State<DigitalInkScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            const RoundedBox("Mon test button"),
             const SizedBox(height: 8),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -133,31 +135,31 @@ class _DigitalInkScreenState extends State<DigitalInkScreen> {
   }
 
   Widget _buildDropdown() => DropdownButton<String>(
-    value: _language,
-    icon: const Icon(Icons.arrow_downward),
-    elevation: 16,
-    style: const TextStyle(color: Colors.blue),
-    underline: Container(
-      height: 2,
-      color: Colors.blue,
-    ),
-    onChanged: (String? lang) {
-      if (lang != null) {
-        setState(() {
-          _language = lang;
-          _digitalInkRecognizer.close();
-          _digitalInkRecognizer =
-              DigitalInkRecognizer(languageCode: _language);
-        });
-      }
-    },
-    items: _languages.map<DropdownMenuItem<String>>((lang) {
-      return DropdownMenuItem<String>(
-        value: lang,
-        child: Text(lang),
+        value: _language,
+        icon: const Icon(Icons.arrow_downward),
+        elevation: 16,
+        style: const TextStyle(color: Colors.blue),
+        underline: Container(
+          height: 2,
+          color: Colors.blue,
+        ),
+        onChanged: (String? lang) {
+          if (lang != null) {
+            setState(() {
+              _language = lang;
+              _digitalInkRecognizer.close();
+              _digitalInkRecognizer =
+                  DigitalInkRecognizer(languageCode: _language);
+            });
+          }
+        },
+        items: _languages.map<DropdownMenuItem<String>>((lang) {
+          return DropdownMenuItem<String>(
+            value: lang,
+            child: Text(lang),
+          );
+        }).toList(),
       );
-    }).toList(),
-  );
 
   void _clearPad() {
     setState(() {
@@ -201,8 +203,8 @@ class _DigitalInkScreenState extends State<DigitalInkScreen> {
     showDialog(
         context: context,
         builder: (context) => const AlertDialog(
-          title: Text('Recognizing'),
-        ),
+              title: Text('Recognizing'),
+            ),
         barrierDismissible: true);
     try {
       final candidates = await _digitalInkRecognizer.recognize(_ink);
@@ -227,15 +229,18 @@ class Signature extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    final rect = Rect.fromLTWH(0, 0, size.width - 10, size.height - 10);
     final Paint paint = Paint()
-      ..color = Colors.blue
+      ..color = ColorConstants.blue
       ..strokeCap = StrokeCap.round
       ..strokeWidth = 4.0;
 
+    canvas.clipRect(rect);
     for (final stroke in ink.strokes) {
       for (int i = 0; i < stroke.points.length - 1; i++) {
         final p1 = stroke.points[i];
         final p2 = stroke.points[i + 1];
+
         canvas.drawLine(Offset(p1.x.toDouble(), p1.y.toDouble()),
             Offset(p2.x.toDouble(), p2.y.toDouble()), paint);
       }
@@ -245,4 +250,3 @@ class Signature extends CustomPainter {
   @override
   bool shouldRepaint(Signature oldDelegate) => true;
 }
-
