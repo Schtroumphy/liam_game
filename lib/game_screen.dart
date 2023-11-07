@@ -1,10 +1,14 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Ink;
 import 'package:google_ml_kit/google_ml_kit.dart';
+import 'package:liam_game/common/constants.dart';
 import 'package:liam_game/style/TextSize.dart';
 import 'package:liam_game/style/colors.dart';
 import 'package:liam_game/style/insets.dart';
 import 'package:liam_game/widgets/Spaces.dart';
+import 'package:liam_game/widgets/countdown_timer.dart';
 import 'package:liam_game/widgets/rounded_box.dart';
+import 'package:liam_game/widgets/rounded_button.dart';
 
 import 'features/digital_ink_recognition/digital_ink_screen.dart';
 
@@ -24,6 +28,9 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    final double displayResult = _isValidated ? 1 : 0;
+
     return Scaffold(
       appBar: AppBar(
           title: const Center(
@@ -35,6 +42,10 @@ class _GameScreenState extends State<GameScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            CountdownTimer(
+              duration: Constants.gameDuration,
+              onFinished: () => _onTimerFinished(context),
+            ),
             RoundedBox(
               "Clavier",
               color: ColorConstants.gray,
@@ -104,5 +115,9 @@ class _GameScreenState extends State<GameScreen> {
         ),
       ),
     );
+  }
+
+  _onTimerFinished(BuildContext context) {
+    if(kDebugMode) print("Timer finished");
   }
 }
