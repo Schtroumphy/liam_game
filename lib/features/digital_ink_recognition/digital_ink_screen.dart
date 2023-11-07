@@ -231,7 +231,7 @@ class Signature extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final rect = Rect.fromLTWH(0, 0, size.width - 10, size.height - 10);
     final Paint paint = Paint()
-      ..color = ColorConstants.blue
+      ..color = AppColor.blue
       ..strokeCap = StrokeCap.round
       ..strokeWidth = 4.0;
 

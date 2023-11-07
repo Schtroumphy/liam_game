@@ -19,12 +19,15 @@ class RoundedBox extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       decoration: BoxDecoration(
-        color: color ?? ColorConstants.yellow,
+        color: color ?? AppColor.yellow,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
         text,
-        style: TextStyle(color: Colors.black, fontSize: textSize/*, fontFamily: textSize < TextSize.l ? "ZenLoop" : "IndieFlower"*/),
+        style: TextStyle(
+          color: AppColor.black,
+          fontSize: textSize,
+        ),
       ),
     );
   }

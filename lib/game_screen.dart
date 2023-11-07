@@ -33,12 +33,13 @@ class _GameScreenState extends State<GameScreen> {
 
     return Scaffold(
       appBar: AppBar(
-          title: const Center(
-        child: Text(
-          'Digital Ink Recognition',
-          textAlign: TextAlign.center,
+        title: const Center(
+          child: Text(
+            Constants.gameName,
+            textAlign: TextAlign.center,
+          ),
         ),
-      )),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -48,7 +49,7 @@ class _GameScreenState extends State<GameScreen> {
             ),
             RoundedBox(
               "Clavier",
-              color: ColorConstants.gray,
+              color: AppColor.gray,
               textSize: TextSize.m,
             ),
             Flexible(
@@ -97,7 +98,7 @@ class _GameScreenState extends State<GameScreen> {
               opacity: isValidated ? 1 : 0,
               child: RoundedBox(
                 "😕 Keabord is not the good answer",
-                color: isError ? ColorConstants.red : ColorConstants.gray,
+                color: isError ? AppColor.red : AppColor.gray,
               ),
             ),
             const Space(size: Insets.m),
@@ -108,7 +109,7 @@ class _GameScreenState extends State<GameScreen> {
             const Space(size: Insets.m),
             RoundedBox(
               "Score: -12",
-              color: ColorConstants.blue,
+              color: AppColor.blue,
             ),
             const Space(size: Insets.s),
           ],
