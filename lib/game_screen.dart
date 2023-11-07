@@ -7,6 +7,7 @@ import 'package:liam_game/style/colors.dart';
 import 'package:liam_game/style/insets.dart';
 import 'package:liam_game/widgets/Spaces.dart';
 import 'package:liam_game/widgets/countdown_timer.dart';
+import 'package:liam_game/widgets/dialog.dart';
 import 'package:liam_game/widgets/rounded_box.dart';
 import 'package:liam_game/widgets/rounded_button.dart';
 
@@ -34,7 +35,6 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     final double displayResult = _isValidated ? 1 : 0;
 
     return Scaffold(
@@ -91,14 +91,14 @@ class _GameScreenState extends State<GameScreen> {
                 RoundedButton(
                   icon: Icons.format_clear_rounded,
                   label: "",
-                  isEnabled : _ink.strokes.isNotEmpty,
+                  isEnabled: _ink.strokes.isNotEmpty,
                   color: AppColor.red,
                   onPressed: _onClearPadClicked,
                 ),
                 const Space(type: SpaceType.horizontal, size: Insets.m),
                 RoundedButton(
                   label: "Check my response",
-                  isEnabled : _ink.strokes.isNotEmpty,
+                  isEnabled: _ink.strokes.isNotEmpty,
                   onPressed: _onCheckAnswerClicked,
                 ),
               ],
@@ -128,7 +128,7 @@ class _GameScreenState extends State<GameScreen> {
     isValidated = true;
   }
 
-  _onPanEnd(DragEndDetails details){
+  _onPanEnd(DragEndDetails details) {
     _points.clear();
     setState(() {});
   }
@@ -152,6 +152,12 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   _onTimerFinished(BuildContext context) {
-    if(kDebugMode) print("Timer finished");
+    if (kDebugMode) print("Timer finished");
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return const GameDialog();
+        });
   }
 }
