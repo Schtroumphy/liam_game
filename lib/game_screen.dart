@@ -85,15 +85,29 @@ class _GameScreenState extends State<GameScreen> {
                 color: isError ? AppColor.red : AppColor.gray,
               ),
             ),
-            const Space(size: Insets.m),
-            RoundedButton(
-              label: "Check my response",
-              onPressed: _onCheckAnswerClicked,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RoundedButton(
+                  icon: Icons.format_clear_rounded,
+                  label: "",
+                  isEnabled : _ink.strokes.isNotEmpty,
+                  color: AppColor.red,
+                  onPressed: _onClearPadClicked,
+                ),
+                const Space(type: SpaceType.horizontal, size: Insets.m),
+                RoundedButton(
+                  label: "Check my response",
+                  isEnabled : _ink.strokes.isNotEmpty,
+                  onPressed: _onCheckAnswerClicked,
+                ),
+              ],
             ),
             const Space(size: Insets.m),
             RoundedBox(
               "Score: -12",
               color: AppColor.blue,
+              fullWidth: false,
             ),
             const Space(size: Insets.s),
           ],
@@ -102,6 +116,13 @@ class _GameScreenState extends State<GameScreen> {
     );
   }
 
+  _onClearPadClicked() {
+    setState(() {
+      _ink.strokes.clear();
+      _points.clear();
+      isValidated = false;
+    });
+  }
 
   _onCheckAnswerClicked() {
     isValidated = true;
@@ -115,8 +136,7 @@ class _GameScreenState extends State<GameScreen> {
   _onPanUpdate(DragUpdateDetails details) {
     setState(() {
       final RenderObject? object = context.findRenderObject();
-      final localPosition = (object as RenderBox?)
-          ?.globalToLocal(details.localPosition);
+      final localPosition = (object as RenderBox?)?.globalToLocal(details.localPosition);
       if (localPosition != null) {
         _points = List.from(_points)
           ..add(StrokePoint(
