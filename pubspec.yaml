@@ -60,9 +60,17 @@ flutter:
         - asset: assets/fonts/IndieFlower-Regular.ttf
     - family: ZenLoop
       fonts:
-          - asset: assets/fonts/ZenLoop-Regular.ttf
-          - asset: assets/fonts/ZenLoop-Italic.ttf
-            style: italic
+        - asset: assets/fonts/ZenLoop-Regular.ttf
+        - asset: assets/fonts/ZenLoop-Italic.ttf
+          style: italic
+    - family: ZenMaruGothic
+      fonts:
+        - asset: assets/fonts/ZenMaruGothic-Regular.ttf
+        - asset: assets/fonts/ZenMaruGothic-Medium.ttf
+          weight: 400
+        - asset: assets/fonts/ZenMaruGothic-Light.ttf
+        - asset: assets/fonts/ZenMaruGothic-Bold.ttf
+          weight: 700
 
 
   # The following line ensures that the Material Icons font is
