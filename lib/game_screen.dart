@@ -23,8 +23,14 @@ class _GameScreenState extends State<GameScreen> {
   final Ink _ink = Ink();
   List<StrokePoint> _points = [];
 
-  final isValidated = false;
+  var _isValidated = false;
   final isError = false;
+
+  set isValidated(bool validated) {
+    setState(() {
+      _isValidated = validated;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,54 +63,32 @@ class _GameScreenState extends State<GameScreen> {
                 onPanStart: (DragStartDetails details) {
                   _ink.strokes.add(Stroke());
                 },
-                onPanUpdate: (DragUpdateDetails details) {
-                  setState(() {
-                    final RenderObject? object = context.findRenderObject();
-                    final localPosition = (object as RenderBox?)
-                        ?.globalToLocal(details.localPosition);
-                    if (localPosition != null) {
-                      _points = List.from(_points)
-                        ..add(StrokePoint(
-                          x: localPosition.dx,
-                          y: localPosition.dy,
-                          t: DateTime.now().millisecondsSinceEpoch,
-                        ));
-                    }
-                    if (_ink.strokes.isNotEmpty) {
-                      _ink.strokes.last.points = _points.toList();
-                    }
-                  });
-                },
-                onPanEnd: (DragEndDetails details) {
-                  _points.clear();
-                  setState(() {});
-                },
-                  child: CustomPaint(
-                    painter: Signature(ink: _ink),
-                    //size: Size.infinite,
-                    child: Center(
-                      child: Container(
-                        margin: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: ColorConstants.yellow),
-                            borderRadius: BorderRadius.circular(10)
-                        ),
+                onPanUpdate: _onPanUpdate,
+                onPanEnd: _onPanEnd,
+                child: CustomPaint(
+                  painter: Signature(ink: _ink),
+                  child: Center(
+                    child: Container(
+                      margin: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: AppColor.yellow),
+                          borderRadius: BorderRadius.circular(10)),
                     ),
                   ),
                 ),
               ),
             ),
             Opacity(
-              opacity: isValidated ? 1 : 0,
+              opacity: displayResult,
               child: RoundedBox(
                 "😕 Keabord is not the good answer",
                 color: isError ? AppColor.red : AppColor.gray,
               ),
             ),
             const Space(size: Insets.m),
-            RoundedBox(
-              "Check my response",
-              color: ColorConstants.yellow,
+            RoundedButton(
+              label: "Check my response",
+              onPressed: _onCheckAnswerClicked,
             ),
             const Space(size: Insets.m),
             RoundedBox(
@@ -116,6 +100,35 @@ class _GameScreenState extends State<GameScreen> {
         ),
       ),
     );
+  }
+
+
+  _onCheckAnswerClicked() {
+    isValidated = true;
+  }
+
+  _onPanEnd(DragEndDetails details){
+    _points.clear();
+    setState(() {});
+  }
+
+  _onPanUpdate(DragUpdateDetails details) {
+    setState(() {
+      final RenderObject? object = context.findRenderObject();
+      final localPosition = (object as RenderBox?)
+          ?.globalToLocal(details.localPosition);
+      if (localPosition != null) {
+        _points = List.from(_points)
+          ..add(StrokePoint(
+            x: localPosition.dx,
+            y: localPosition.dy,
+            t: DateTime.now().millisecondsSinceEpoch,
+          ));
+      }
+      if (_ink.strokes.isNotEmpty) {
+        _ink.strokes.last.points = _points.toList();
+      }
+    });
   }
 
   _onTimerFinished(BuildContext context) {

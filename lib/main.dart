@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:liam_game/game_screen.dart';
+import 'package:liam_game/style/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,12 @@ class MyApp extends StatelessWidget {
         fontFamily: "IndieFlower",
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: AppColor.yellow,
+            foregroundColor: AppColor.brown,
+          ),
+        ),
       ),
       debugShowCheckedModeBanner: false,
       home: const GameScreen(),
