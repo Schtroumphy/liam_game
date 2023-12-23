@@ -1,44 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:liam_game/style/TextSize.dart';
 import 'package:liam_game/style/colors.dart';
+import 'package:liam_game/widgets/atoms/app_text.dart';
 
 class RoundedBox extends StatelessWidget {
   const RoundedBox(
     this.text, {
     Key? key,
-    this.color,
-    this.textSize = TextSize.s,
+    this.backgroundColor,
     this.fullWidth = true,
     this.icon,
   }) : super(key: key);
 
-  final Color? color;
+  final Color? backgroundColor;
   final String text;
-  final double textSize;
   final IconData? icon;
   final bool fullWidth;
 
   @override
   Widget build(BuildContext context) {
+    final width = fullWidth ? double.infinity : null;
+    const padding = EdgeInsets.symmetric(vertical: 10, horizontal: 20);
+
     return Container(
-      width: fullWidth ? double.infinity : null,
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      width: width,
+      margin: padding,
+      padding: padding,
       decoration: BoxDecoration(
-        color: color ?? AppColor.yellow,
+        color: backgroundColor ?? AppColor.yellow,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if(icon != null) Icon(icon),
-          Text(
-            text,
-            style: TextStyle(
-              color: AppColor.black,
-              fontSize: textSize,
-            ),
+          if (icon != null) Icon(icon),
+          AppText(
+            label: text,
+            textColor: AppColor.black,
           ),
         ],
       ),

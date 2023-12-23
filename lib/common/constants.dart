@@ -4,8 +4,10 @@ class Constants {
 
   Constants._();
 
+  static const gameTitle = 'L.I.A.M';
+
   static const gameName = 'Digital Ink Recognition';
-  static const gameDuration = Duration(seconds: 3);
+  static const gameDuration = Duration(seconds: 10);
 
   static const finishedGame = "Game Finished !";
   static const goBack = "GO BACK";

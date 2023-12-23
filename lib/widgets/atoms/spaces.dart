@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class Space extends StatelessWidget {
-  const Space({Key? key, this.type = SpaceType.vertical, required this.size})
+  const Space(this.size, {Key? key, this.type = SpaceType.vertical})
       : super(key: key);
 
   final SpaceType type;

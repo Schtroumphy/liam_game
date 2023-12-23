@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart' hide Ink;
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
 import 'package:liam_game/style/colors.dart';
-import 'package:liam_game/widgets/rounded_box.dart';
+import 'package:liam_game/widgets/molecules/rounded_box.dart';
 
 import 'activity_indicator.dart';
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:liam_game/game_screen.dart';
 import 'package:liam_game/style/colors.dart';
+
+import 'home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: const GameScreen(),
+      home: const HomeScreen(),
     );
   }
 }

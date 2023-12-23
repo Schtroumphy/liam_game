@@ -8,4 +8,5 @@ class TextSize {
   static const m =  24.0;
   static const l =  36.0;
   static const xl =  48.0;
+  static const xxl =  64.0;
 }

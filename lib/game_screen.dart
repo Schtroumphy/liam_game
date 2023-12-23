@@ -2,19 +2,21 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Ink;
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:liam_game/common/constants.dart';
-import 'package:liam_game/style/TextSize.dart';
 import 'package:liam_game/style/colors.dart';
 import 'package:liam_game/style/insets.dart';
-import 'package:liam_game/widgets/Spaces.dart';
-import 'package:liam_game/widgets/countdown_timer.dart';
-import 'package:liam_game/widgets/dialog.dart';
-import 'package:liam_game/widgets/rounded_box.dart';
-import 'package:liam_game/widgets/rounded_button.dart';
+import 'package:liam_game/widgets/atoms/app_text.dart';
+import 'package:liam_game/widgets/atoms/spaces.dart';
+import 'package:liam_game/widgets/organisms/countdown_timer.dart';
+import 'package:liam_game/widgets/organisms/dialog.dart';
+import 'package:liam_game/widgets/molecules/rounded_box.dart';
+import 'package:liam_game/widgets/molecules/rounded_button.dart';
 
 import 'features/digital_ink_recognition/digital_ink_screen.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({Key? key}) : super(key: key);
+
+  static const route = "/game_screen";
 
   @override
   State<GameScreen> createState() => _GameScreenState();
@@ -40,10 +42,7 @@ class _GameScreenState extends State<GameScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Center(
-          child: Text(
-            Constants.gameName,
-            textAlign: TextAlign.center,
-          ),
+          child: AppText(label: Constants.gameName),
         ),
       ),
       body: SafeArea(
@@ -53,11 +52,7 @@ class _GameScreenState extends State<GameScreen> {
               duration: Constants.gameDuration,
               onFinished: () => _onTimerFinished(context),
             ),
-            RoundedBox(
-              "Clavier",
-              color: AppColor.gray,
-              textSize: TextSize.m,
-            ),
+            RoundedBox("Clavier", backgroundColor: AppColor.gray),
             Flexible(
               child: GestureDetector(
                 onPanStart: (DragStartDetails details) {
@@ -82,7 +77,7 @@ class _GameScreenState extends State<GameScreen> {
               opacity: displayResult,
               child: RoundedBox(
                 "😕 Keabord is not the good answer",
-                color: isError ? AppColor.red : AppColor.gray,
+                backgroundColor: isError ? AppColor.red : AppColor.gray,
               ),
             ),
             Row(
@@ -95,7 +90,7 @@ class _GameScreenState extends State<GameScreen> {
                   color: AppColor.red,
                   onPressed: _onClearPadClicked,
                 ),
-                const Space(type: SpaceType.horizontal, size: Insets.m),
+                const Space(Insets.m, type: SpaceType.horizontal),
                 RoundedButton(
                   label: "Check my response",
                   isEnabled: _ink.strokes.isNotEmpty,
@@ -103,13 +98,13 @@ class _GameScreenState extends State<GameScreen> {
                 ),
               ],
             ),
-            const Space(size: Insets.m),
+            const Space(Insets.m),
             RoundedBox(
               "Score: -12",
-              color: AppColor.blue,
+              backgroundColor: AppColor.blue,
               fullWidth: false,
             ),
-            const Space(size: Insets.s),
+            const Space(Insets.s),
           ],
         ),
       ),
@@ -136,7 +131,8 @@ class _GameScreenState extends State<GameScreen> {
   _onPanUpdate(DragUpdateDetails details) {
     setState(() {
       final RenderObject? object = context.findRenderObject();
-      final localPosition = (object as RenderBox?)?.globalToLocal(details.localPosition);
+      final localPosition =
+          (object as RenderBox?)?.globalToLocal(details.localPosition);
       if (localPosition != null) {
         _points = List.from(_points)
           ..add(StrokePoint(
