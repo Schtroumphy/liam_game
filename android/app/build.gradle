@@ -24,6 +24,21 @@ if (flutterVersionName == null) {
 }
 
 android {
+
+    flavorDimensions += "flavor-type"
+
+    productFlavors {
+        dev {
+            dimension "flavor-type"
+            applicationId "com.jeanloth.liam.dev"
+            resValue "string", "app_name", "L.I.A.M [DEV]"
+        }
+        prod {
+            dimension "flavor-type"
+            applicationId "com.jeanloth.liam"
+            resValue "string", "app_name", "L.I.A.M"
+        }
+    }
     namespace = "com.example.liam_game"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
