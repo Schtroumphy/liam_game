@@ -1,4 +1,4 @@
-import 'flavors.dart';
+import 'core/flavors.dart';
 
 import 'main.dart' as runner;
 

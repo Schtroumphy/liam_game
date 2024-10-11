@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:liam_game/pages/sign_in_screen.dart';
+import 'package:liam_game/app.dart';
 
 FutureOr<void> main() async {
-  runApp(const SignInScreen());
+  runApp(const App());
 }
