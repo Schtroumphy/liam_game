@@ -18,9 +18,14 @@ final themeData = ThemeData(
         fontWeight: FontWeight.w500,
         color: AppColors.primaryBlack,
       ),
+      labelLarge: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+      ),
       labelMedium: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w500,
+        color: AppColors.white
       ),
     ),
     textButtonTheme: TextButtonThemeData(

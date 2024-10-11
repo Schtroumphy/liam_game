@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:liam_game/core/extensions/num_extension.dart';
+import 'package:liam_game/pages/home/home_screen.dart';
 import 'package:liam_game/pages/onboarding/widgets/bottom_buttons_navigation.dart';
 import 'package:liam_game/pages/onboarding/widgets/onboarding_app_bar.dart';
 import 'package:liam_game/pages/onboarding/model/onboarding_model.dart';
@@ -31,20 +32,37 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final pagesCount = models.length;
+
     return PageView.builder(
       controller: _pageController,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: models.length,
+      itemCount: pagesCount,
       onPageChanged: (index) => changePage(index),
       itemBuilder: (_, index) => OnBoardingContent(
         currentIndex: _currentPage,
         model: models[_currentPage],
-        onNextCLick: () => _pageController.nextPage(
-          duration: 600.milliseconds,
-          curve: Curves.linearToEaseOut,
-        ),
-        onSkipClick: null,
+        onNextCLick: () => _nextPage(_pageController, _currentPage, pagesCount, context),
+        onSkipClick: _goToHomePage,
       ),
+    );
+  }
+
+  _goToHomePage() {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => const HomeScreen()),
+    );
+  }
+
+  _nextPage(PageController controller, int currentPage, int maxPage, BuildContext context) {
+    if (currentPage == maxPage - 1) {
+      _goToHomePage();
+      // TODO : To be changed by auto redirection if connected && onboarded
+      return;
+    }
+    _pageController.nextPage(
+      duration: 600.milliseconds,
+      curve: Curves.linearToEaseOut,
     );
   }
 }

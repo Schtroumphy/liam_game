@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:liam_game/core/extensions/build_context_extension.dart';
 
 class ButtonIcon extends StatelessWidget {
   const ButtonIcon({super.key, required this.label, this.imagePath, this.child, this.onClick});
@@ -19,7 +20,10 @@ class ButtonIcon extends StatelessWidget {
     return ElevatedButton(
       onPressed: onClick,
       child: Row(mainAxisSize: MainAxisSize.min, children: [
-        Text(label),
+        Text(
+          label,
+          style: context.textTheme.labelMedium,
+        ),
         const SizedBox(width: 8),
         SizedBox(
           width: 24,
