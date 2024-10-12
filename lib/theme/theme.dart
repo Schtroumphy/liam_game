@@ -23,7 +23,7 @@ final themeData = ThemeData(
         fontWeight: FontWeight.w600,
       ),
       labelMedium: TextStyle(
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: FontWeight.w500,
         color: AppColors.white
       ),
