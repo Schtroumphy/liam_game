@@ -48,6 +48,7 @@ final themeData = ThemeData(
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        elevation: 15,
         foregroundColor: AppColors.white,
         backgroundColor: AppColors.primaryBlack,
         shape: RoundedRectangleBorder(

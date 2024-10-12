@@ -4,8 +4,11 @@ import 'package:liam_game/theme/colors.dart';
 import 'package:liam_game/widgets/app_padding.dart';
 import 'package:liam_game/widgets/app_text.dart';
 
-class HomeHeader extends StatelessWidget {
-  const HomeHeader({super.key});
+class AppHeader extends StatelessWidget {
+  const AppHeader({super.key, this.title, this.icon});
+
+  final String? title;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +19,11 @@ class HomeHeader extends StatelessWidget {
           ColoredBox(
             color: AppColors.white,
             child: AppText(
-              'Welcome back, Axel 👋',
+              title ?? 'Welcome back, Axel 👋',
               style: context.textTheme.labelLarge?.copyWith(color: AppColors.primaryBlack, fontWeight: FontWeight.normal),
             ),
           ),
-          const Icon(Icons.settings)
+          Icon(icon ?? Icons.settings)
         ],
       ),
     );

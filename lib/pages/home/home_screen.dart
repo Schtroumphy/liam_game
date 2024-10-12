@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:liam_game/core/extensions/build_context_extension.dart';
 import 'package:liam_game/core/extensions/string_extensions.dart';
+import 'package:liam_game/pages/game/game_screen.dart';
 import 'package:liam_game/pages/home/widgets/game_carousel.dart';
 import 'package:liam_game/pages/home/widgets/home_header.dart';
 import 'package:liam_game/theme/colors.dart';
@@ -28,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
         title: const SafeArea(
-          child: HomeHeader(),
+          child: AppHeader(),
         ),
       ),
       body: Container(
@@ -66,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Align(
               alignment: Alignment.center,
               child: ButtonIcon(
-                onClick: _isAvailable ? () {} : null,
+                onClick: _isAvailable ? _goToGamePage : null,
                 label: "Play".hardcoded,
                 child: const Icon(
                   Icons.play_arrow_outlined,
@@ -79,5 +80,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  _goToGamePage() {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (_) => const GameScreen(),
+    ));
   }
 }
