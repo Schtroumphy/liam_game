@@ -13,6 +13,7 @@ class EndGameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: Center(
         child: Container(
           decoration: BoxDecoration(

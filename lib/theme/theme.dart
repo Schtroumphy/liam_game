@@ -15,7 +15,7 @@ final themeData = ThemeData(
       ),
       titleMedium: TextStyle(
         fontSize: 28,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w700,
         color: AppColors.primaryBlack,
       ),
       labelLarge: TextStyle(

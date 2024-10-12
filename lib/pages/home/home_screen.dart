@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: SizedBox(
-                width: size.width * 0.7,
+                width: size.width * 0.8,
                 child: AppText(
                   'Which game do you want to play today ?'.hardcoded,
                   style: context.textTheme.titleMedium,

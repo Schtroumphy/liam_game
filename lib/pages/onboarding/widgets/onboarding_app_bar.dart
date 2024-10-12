@@ -68,7 +68,7 @@ class Bar extends StatelessWidget {
       child: Container(
         height: 2,
         width: 100,
-        color: isSelected ? AppColors.primaryBlack : Colors.grey,
+        color: isSelected ? AppColors.primaryBlack : AppColors.white,
       ),
     );
   }
