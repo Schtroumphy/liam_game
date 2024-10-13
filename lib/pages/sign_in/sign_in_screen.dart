@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:liam_game/core/extensions/string_extensions.dart';
-import 'package:liam_game/pages/onboarding/onboarding_screen.dart';
+import 'package:liam_game/pages/home/home_screen.dart';
 import 'package:liam_game/theme/colors.dart';
 import 'package:liam_game/widgets/app_image.dart';
 import 'package:liam_game/widgets/app_text.dart';
@@ -42,7 +42,8 @@ class SignInScreen extends StatelessWidget {
                       label: 'Connexion with Google'.hardcoded,
                       imagePath: 'assets/icons/google_icon.png'.hardcoded,
                       onClick: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OnBoardingScreen()));
+                        //Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OnBoardingScreen()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const HomeScreen())); // TODO Uncomment
                       },
                     ),
                     const Spacer(flex: 3),

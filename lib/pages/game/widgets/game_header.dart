@@ -27,8 +27,8 @@ class GameHeader extends StatelessWidget {
             ),
           ),
           TimeText(
-            duration: gameDuration ?? 5.seconds,
-            onFinished: () => _goToEndGamePage(context),
+            duration: gameDuration ?? 25.seconds,
+            onFinished: () {}, //=>_goToEndGamePage(context),
           ),
         ],
       ),
