@@ -1,0 +1,457 @@
+[
+  {
+    "fr_word": "clavier",
+    "en_word": "keyboard",
+    "fr_description": "interface homme-machine munie de touches permettant à l'utilisateur d'entrer dans l'ordinateur une séquence de données, notamment textuelle",
+    "en_desc": "human-machine interface equipped with keys, allowing the user to input a sequence of data into the computer, primarily textual",
+    "level": 1
+  },
+  {
+    "fr_word": "chaise",
+    "en_word": "chair",
+    "fr_description": "meuble sur lequel une personne peut s'asseoir, généralement avec un dossier",
+    "en_desc": "a piece of furniture designed for a person to sit on, typically with a backrest",
+    "level": 1
+  },
+  {
+    "fr_word": "ordinateur",
+    "en_word": "computer",
+    "fr_description": "dispositif électronique capable de traiter des données automatiquement",
+    "en_desc": "an electronic device capable of processing data automatically",
+    "level": 1
+  },
+  {
+    "fr_word": "soleil",
+    "en_word": "sun",
+    "fr_description": "astre autour duquel la Terre et les autres planètes du système solaire gravitent",
+    "en_desc": "the star around which the Earth and other planets of the solar system revolve",
+    "level": 1
+  },
+  {
+    "fr_word": "maison",
+    "en_word": "house",
+    "fr_description": "bâtiment destiné à loger des personnes",
+    "en_desc": "a building designed to house people",
+    "level": 1
+  },
+  {
+    "fr_word": "livre",
+    "en_word": "book",
+    "fr_description": "ensemble de pages reliées contenant du texte ou des illustrations",
+    "en_desc": "a collection of bound pages containing text or illustrations",
+    "level": 1
+  },
+  {
+    "fr_word": "fenêtre",
+    "en_word": "window",
+    "fr_description": "ouverture dans un mur permettant de laisser entrer la lumière et l'air",
+    "en_desc": "an opening in a wall designed to let in light and air",
+    "level": 1
+  },
+  {
+    "fr_word": "voiture",
+    "en_word": "car",
+    "fr_description": "véhicule à moteur utilisé pour le transport de personnes",
+    "en_desc": "a motor vehicle used for transporting people",
+    "level": 1
+  },
+  {
+    "fr_word": "table",
+    "en_word": "table",
+    "fr_description": "meuble plat utilisé pour manger, travailler ou poser des objets",
+    "en_desc": "a flat piece of furniture used for eating, working, or placing objects",
+    "level": 1
+  },
+  {
+    "fr_word": "bouteille",
+    "en_word": "bottle",
+    "fr_description": "récipient cylindrique, généralement en verre ou en plastique, utilisé pour contenir des liquides",
+    "en_desc": "a cylindrical container, usually made of glass or plastic, used to hold liquids",
+    "level": 1
+  },
+  {
+    "fr_word": "chaussure",
+    "en_word": "shoe",
+    "fr_description": "objet porté aux pieds pour protéger et faciliter la marche",
+    "en_desc": "an item worn on the feet to protect them and make walking easier",
+    "level": 1
+  },
+  {
+    "fr_word": "école",
+    "en_word": "school",
+    "fr_description": "établissement où l'on dispense des enseignements",
+    "en_desc": "an institution where education is provided",
+    "level": 1
+  },
+  {
+    "fr_word": "train",
+    "en_word": "train",
+    "fr_description": "moyen de transport ferroviaire composé de wagons tirés par une locomotive",
+    "en_desc": "a railway transport vehicle made up of wagons pulled by a locomotive",
+    "level": 1
+  },
+  {
+    "fr_word": "stylo",
+    "en_word": "pen",
+    "fr_description": "instrument d'écriture contenant de l'encre",
+    "en_desc": "a writing instrument that contains ink",
+    "level": 1
+  },
+  {
+    "fr_word": "papier",
+    "en_word": "paper",
+    "fr_description": "matériau mince et souple utilisé pour écrire ou imprimer",
+    "en_desc": "a thin, flexible material used for writing or printing",
+    "level": 1
+  },
+  {
+    "fr_word": "porte",
+    "en_word": "door",
+    "fr_description": "barrière mobile servant à fermer une ouverture dans un mur",
+    "en_desc": "a movable barrier used to close an opening in a wall",
+    "level": 1
+  },
+  {
+    "fr_word": "lampe",
+    "en_word": "lamp",
+    "fr_description": "dispositif qui produit de la lumière artificielle",
+    "en_desc": "a device that produces artificial light",
+    "level": 1
+  },
+  {
+    "fr_word": "arbre",
+    "en_word": "tree",
+    "fr_description": "plante ligneuse possédant un tronc et des branches",
+    "en_desc": "a woody plant with a trunk and branches",
+    "level": 1
+  },
+  {
+    "fr_word": "chaud",
+    "en_word": "hot",
+    "fr_description": "qui a une température élevée",
+    "en_desc": "having a high temperature",
+    "level": 1
+  },
+  {
+    "fr_word": "froid",
+    "en_word": "cold",
+    "fr_description": "qui a une basse température",
+    "en_desc": "having a low temperature",
+    "level": 1
+  },
+  {
+    "fr_word": "pluie",
+    "en_word": "rain",
+    "fr_description": "précipitation liquide tombant des nuages",
+    "en_desc": "liquid precipitation falling from clouds",
+    "level": 1
+  },
+  {
+    "fr_word": "neige",
+    "en_word": "snow",
+    "fr_description": "précipitation solide formée de cristaux de glace",
+    "en_desc": "solid precipitation made up of ice crystals",
+    "level": 1
+  },
+  {
+    "fr_word": "vent",
+    "en_word": "wind",
+    "fr_description": "déplacement de l'air dans l'atmosphère",
+    "en_desc": "the movement of air in the atmosphere",
+    "level": 1
+  },
+  {
+    "fr_word": "montagne",
+    "en_word": "mountain",
+    "fr_description": "élévation naturelle de terrain de grande hauteur",
+    "en_desc": "a natural elevation of terrain with significant height",
+    "level": 1
+  },
+  {
+    "fr_word": "rivière",
+    "en_word": "river",
+    "fr_description": "cours d'eau naturel qui se jette dans une mer ou un océan",
+    "en_desc": "a natural watercourse that flows into a sea or ocean",
+    "level": 1
+  },
+  {
+    "fr_word": "ciel",
+    "en_word": "sky",
+    "fr_description": "voûte céleste visible au-dessus de la Terre",
+    "en_desc": "the celestial dome visible above the Earth",
+    "level": 1
+  },
+  {
+    "fr_word": "mer",
+    "en_word": "sea",
+    "fr_description": "grande étendue d'eau salée qui couvre une partie de la surface terrestre",
+    "en_desc": "a large body of salty water covering part of the Earth's surface",
+    "level": 1
+  },
+  {
+    "fr_word": "chapeau",
+    "en_word": "hat",
+    "fr_description": "objet porté sur la tête pour se protéger ou comme accessoire de mode",
+    "en_desc": "an item worn on the head for protection or as a fashion accessory",
+    "level": 1
+  },
+  {
+    "fr_word": "montre",
+    "en_word": "watch",
+    "fr_description": "instrument permettant de mesurer et afficher l'heure",
+    "en_desc": "a device used to measure and display the time",
+    "level": 1
+  },
+  {
+    "fr_word": "étoile",
+    "en_word": "star",
+    "fr_description": "astre brillant dans le ciel nocturne",
+    "en_desc": "a bright celestial body visible in the night sky",
+    "level": 1
+  },
+  {
+    "fr_word": "forêt",
+    "en_word": "forest",
+    "fr_description": "vaste étendue couverte d'arbres",
+    "en_desc": "a large area covered with trees",
+    "level": 1
+  },
+  {
+    "fr_word": "pont",
+    "en_word": "bridge",
+    "fr_description": "structure permettant de franchir un obstacle naturel ou artificiel",
+    "en_desc": "a structure allowing one to cross a natural or artificial obstacle",
+    "level": 1
+  },
+  {
+    "fr_word": "chat",
+    "en_word": "cat",
+    "fr_description": "animal domestique félin souvent gardé comme animal de compagnie",
+    "en_desc": "a domestic feline often kept as a pet",
+    "level": 1
+  },
+  {
+    "fr_word": "ascenseur",
+    "en_word": "elevator",
+    "fr_description": "dispositif mécanique permettant de transporter des personnes ou des objets entre différents étages d'un bâtiment",
+    "en_desc": "a mechanical device used to transport people or objects between different floors of a building",
+    "level": 2
+  },
+  {
+    "fr_word": "bibliothèque",
+    "en_word": "library",
+    "fr_description": "lieu où sont conservés et prêtés des livres ou d'autres documents écrits",
+    "en_desc": "a place where books or other written documents are kept and lent out",
+    "level": 2
+  },
+  {
+    "fr_word": "parapluie",
+    "en_word": "umbrella",
+    "fr_description": "objet portatif permettant de se protéger de la pluie ou du soleil",
+    "en_desc": "a portable object used for protection against rain or sun",
+    "level": 2
+  },
+  {
+    "fr_word": "réfrigérateur",
+    "en_word": "refrigerator",
+    "fr_description": "appareil électroménager servant à conserver les aliments au frais",
+    "en_desc": "a household appliance used to keep food cool",
+    "level": 2
+  },
+  {
+    "fr_word": "croissance",
+    "en_word": "growth",
+    "fr_description": "processus d'augmentation ou de développement d'une entité, souvent économique ou biologique",
+    "en_desc": "the process of increasing or developing, often economically or biologically",
+    "level": 2
+  },
+  {
+    "fr_word": "économie",
+    "en_word": "economy",
+    "fr_description": "système de production, de distribution et de consommation des biens et services d'un pays",
+    "en_desc": "the system of production, distribution, and consumption of goods and services in a country",
+    "level": 2
+  },
+  {
+    "fr_word": "patrimoine",
+    "en_word": "heritage",
+    "fr_description": "ensemble des biens culturels, naturels et immatériels transmis par une génération à la suivante",
+    "en_desc": "the collection of cultural, natural, and intangible assets passed from one generation to the next",
+    "level": 2
+  },
+  {
+    "fr_word": "investissement",
+    "en_word": "investment",
+    "fr_description": "action de placer des ressources, souvent financières, dans une activité dans le but de générer un profit ou un bénéfice futur",
+    "en_desc": "the act of placing resources, often financial, into an activity with the goal of generating future profit or benefit",
+    "level": 2
+  },
+  {
+    "fr_word": "urbanisme",
+    "en_word": "urban planning",
+    "fr_description": "ensemble des actions visant à organiser et à structurer l'espace urbain pour répondre aux besoins de la population",
+    "en_desc": "the set of actions aimed at organizing and structuring urban space to meet the population's needs",
+    "level": 2
+  },
+  {
+    "fr_word": "circulation",
+    "en_word": "traffic",
+    "fr_description": "flux de véhicules, de piétons ou de marchandises se déplaçant dans un espace donné, souvent sur les routes",
+    "en_desc": "the flow of vehicles, pedestrians, or goods moving through a given space, often on roads",
+    "level": 2
+  },
+  {
+    "fr_word": "climatisation",
+    "en_word": "air conditioning",
+    "fr_description": "système permettant de réguler la température et l'humidité d'une pièce ou d'un bâtiment",
+    "en_desc": "a system that regulates the temperature and humidity of a room or building",
+    "level": 2
+  },
+  {
+    "fr_word": "courage",
+    "en_word": "courage",
+    "fr_description": "force mentale ou morale permettant de faire face à des situations difficiles",
+    "en_desc": "mental or moral strength that enables one to face difficult situations",
+    "level": 2
+  },
+  {
+    "fr_word": "diversité",
+    "en_word": "diversity",
+    "fr_description": "variété et coexistence d'éléments différents au sein d'un même ensemble, souvent appliqué à la culture ou à la nature",
+    "en_desc": "variety and coexistence of different elements within a single group, often applied to culture or nature",
+    "level": 2
+  },
+  {
+    "fr_word": "écologie",
+    "en_word": "ecology",
+    "fr_description": "étude des interactions entre les organismes vivants et leur environnement",
+    "en_desc": "the study of interactions between living organisms and their environment",
+    "level": 2
+  },
+  {
+    "fr_word": "féminisme",
+    "en_word": "feminism",
+    "fr_description": "mouvement social et politique visant à promouvoir les droits des femmes et l'égalité entre les sexes",
+    "en_desc": "a social and political movement aimed at promoting women's rights and gender equality",
+    "level": 2
+  },
+  {
+    "fr_word": "géopolitique",
+    "en_word": "geopolitics",
+    "fr_description": "étude des influences géographiques sur les relations politiques et internationales",
+    "en_desc": "the study of geographical influences on political and international relations",
+    "level": 2
+  },
+  {
+    "fr_word": "innovation",
+    "en_word": "innovation",
+    "fr_description": "introduction de nouvelles idées, méthodes ou technologies",
+    "en_desc": "the introduction of new ideas, methods, or technologies",
+    "level": 2
+  },
+  {
+    "fr_word": "métaphore",
+    "en_word": "metaphor",
+    "fr_description": "figure de style consistant à utiliser un mot ou une expression pour désigner une chose par analogie",
+    "en_desc": "a figure of speech in which a word or expression is used to refer to something by analogy",
+    "level": 2
+  },
+  {
+    "fr_word": "négociation",
+    "en_word": "negotiation",
+    "fr_description": "processus de discussion entre plusieurs parties pour parvenir à un accord",
+    "en_desc": "the process of discussion between multiple parties to reach an agreement",
+    "level": 2
+  },
+  {
+    "fr_word": "psychologie",
+    "en_word": "psychology",
+    "fr_description": "science qui étudie le comportement humain et les processus mentaux",
+    "en_desc": "the science that studies human behavior and mental processes",
+    "level": 2
+  },
+  {
+    "fr_word": "révolution",
+    "en_word": "revolution",
+    "fr_description": "changement radical et souvent violent dans une société, un gouvernement ou une industrie",
+    "en_desc": "a radical and often violent change in society, government, or industry",
+    "level": 2
+  },
+  {
+    "fr_word": "solidarité",
+    "en_word": "solidarity",
+    "fr_description": "soutien mutuel et coopération entre individus ou groupes partageant des intérêts ou des objectifs communs",
+    "en_desc": "mutual support and cooperation between individuals or groups sharing common interests or goals",
+    "level": 2
+  },
+  {
+    "fr_word": "abstrait",
+    "en_word": "abstract",
+    "fr_description": "concept ou idée qui n'a pas de forme physique ou de représentation concrète",
+    "en_desc": "a concept or idea that has no physical form or concrete representation",
+    "level": 3
+  },
+  {
+    "fr_word": "antithèse",
+    "en_word": "antithesis",
+    "fr_description": "contraste ou opposition entre deux idées ou concepts",
+    "en_desc": "a contrast or opposition between two ideas or concepts",
+    "level": 3
+  },
+  {
+    "fr_word": "épistémologie",
+    "en_word": "epistemology",
+    "fr_description": "branche de la philosophie qui étudie la nature et la validité de la connaissance",
+    "en_desc": "the branch of philosophy that studies the nature and validity of knowledge",
+    "level": 3
+  },
+  {
+    "fr_word": "holistique",
+    "en_word": "holistic",
+    "fr_description": "qui prend en compte l'intégralité d'un système ou d'une entité, plutôt que ses parties isolées",
+    "en_desc": "considering the entirety of a system or entity, rather than isolated parts",
+    "level": 3
+  },
+  {
+    "fr_word": "idéologie",
+    "en_word": "ideology",
+    "fr_description": "ensemble cohérent d'idées ou de croyances propres à un groupe, un parti ou une nation",
+    "en_desc": "a coherent set of ideas or beliefs belonging to a group, party, or nation",
+    "level": 3
+  },
+  {
+    "fr_word": "paradigme",
+    "en_word": "paradigm",
+    "fr_description": "modèle ou cadre théorique utilisé pour comprendre et organiser une réalité complexe",
+    "en_desc": "a model or theoretical framework used to understand and organize a complex reality",
+    "level": 3
+  },
+  {
+    "fr_word": "rhétorique",
+    "en_word": "rhetoric",
+    "fr_description": "art de bien parler et de persuader à travers l'utilisation du langage",
+    "en_desc": "the art of speaking well and persuading through the use of language",
+    "level": 3
+  },
+  {
+    "fr_word": "sociologie",
+    "en_word": "sociology",
+    "fr_description": "science qui étudie les sociétés humaines et les interactions entre individus",
+    "en_desc": "the science that studies human societies and interactions between individuals",
+    "level": 3
+  },
+  {
+    "fr_word": "systémique",
+    "en_word": "systemic",
+    "fr_description": "qui concerne un système dans son ensemble, plutôt que des parties isolées",
+    "en_desc": "pertaining to a system as a whole, rather than isolated parts",
+    "level": 3
+  },
+  {
+    "fr_word": "utopie",
+    "en_word": "utopia",
+    "fr_description": "vision idéale d'une société parfaite qui n'existe pas dans la réalité",
+    "en_desc": "an ideal vision of a perfect society that does not exist in reality",
+    "level": 3
+  }
+]

@@ -1,9 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart' hide Ink;
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
 import 'package:liam_game/core/extensions/int_extension.dart';
+import 'package:liam_game/core/extensions/num_extension.dart';
 import 'package:liam_game/core/extensions/string_extensions.dart';
+import 'package:liam_game/pages/game/model/word.dart';
 import 'package:liam_game/pages/game/widgets/activity_indicator.dart';
 import 'package:liam_game/pages/game/widgets/message_box.dart';
+import 'package:liam_game/pages/game/widgets/rounded_colored_text.dart';
 import 'package:liam_game/theme/colors.dart';
 import 'package:liam_game/widgets/app_padding.dart';
 import 'package:liam_game/widgets/button_icon.dart';
@@ -17,13 +22,39 @@ class InkPanel extends StatefulWidget {
 
 class _InkPanelState extends State<InkPanel> {
   final DigitalInkRecognizerModelManager _modelManager = DigitalInkRecognizerModelManager();
-  var _language = 'en';
+  final _language = 'en';
   final languages = ['en', 'fr'];
 
-  var _digitalInkRecognizer = DigitalInkRecognizer(languageCode: 'en');
+  List<Word> _futureWords = [];
+  Word? _currentWord = null;
+  bool _display = false;
+  bool _isGoodAnswer = false;
+
+  final _digitalInkRecognizer = DigitalInkRecognizer(languageCode: 'en');
   final Ink _ink = Ink();
   List<StrokePoint> _points = [];
   String _recognizedText = '';
+
+  setCurrentWord(Word? newWord) {
+    setState(() {
+      _currentWord = newWord;
+      _display = false;
+    });
+  }
+
+  displayResult(bool isGood){
+    setState(() {
+      _display = true;
+      _isGoodAnswer = isGood;
+      if(isGood) {
+        _currentWord = _futureWords.where((e) => e.level == 1).toList()[Random().nextInt(30)];
+        Future.delayed(3.seconds, () {
+          _display = false;
+        });
+        _clearPad();
+      }
+    });
+  }
 
   @override
   void initState() {
@@ -31,6 +62,8 @@ class _InkPanelState extends State<InkPanel> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await _downloadModel();
+      _futureWords = await Word.loadWords();
+      _currentWord = _futureWords.where((e) => e.level == 1).toList()[Random().nextInt(30)];
     });
   }
 
@@ -44,6 +77,7 @@ class _InkPanelState extends State<InkPanel> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        RoundedColoredText(_currentWord?.frWord),
         AppPadding(
           child: AspectRatio(
             aspectRatio: .95,
@@ -107,14 +141,18 @@ class _InkPanelState extends State<InkPanel> {
               foregroundColor: AppColors.primaryBlack,
               child: const Icon(Icons.check),
             ),
+            IconButton(
+              onPressed: () => {
+                setCurrentWord(_futureWords.where((e) => e.level == 1).toList()[Random().nextInt(30)])
+              },
+              icon: const Icon(Icons.arrow_forward),
+            ),
           ],
         ),
         1.flex,
-        Text('Recognized texts : $_recognizedText'),
-        1.flex,
         MessageBox(
-          'Good answer !'.hardcoded,
-          displayed: false,
+          '${_isGoodAnswer ? 'Good' : 'Wrong'} answer !'.hardcoded,
+          displayed: _display,
         ),
         1.flex
       ],
@@ -133,20 +171,25 @@ class _InkPanelState extends State<InkPanel> {
             ),
         barrierDismissible: true);
     try {
-      final candidates = await _digitalInkRecognizer.recognize(_ink);
+      final candidates = (await _digitalInkRecognizer.recognize(_ink)).map((e) => e.text);
       _recognizedText = '';
       for (final candidate in candidates) {
-        _recognizedText += '${candidate.text} ,';
+        _recognizedText += '$candidate ,';
       }
-      setState(() {});
+      print('Recognized text : $_recognizedText');
+      if(candidates.contains(_currentWord?.enWord)){
+        displayResult(true);
+      } else {
+        displayResult(false);
+      }
     } catch (e) {
-      if(context.mounted) {
+      if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(e.toString()),
         ));
       }
     }
-    if(context.mounted) Navigator.pop(context);
+    if (context.mounted) Navigator.pop(context);
   }
 
   void _clearPad() {
