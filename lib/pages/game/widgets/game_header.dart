@@ -1,21 +1,22 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:liam_game/core/extensions/build_context_extension.dart';
 import 'package:liam_game/core/extensions/num_extension.dart';
 import 'package:liam_game/core/extensions/string_extensions.dart';
-import 'package:liam_game/pages/game/end_game_screen.dart';
+import 'package:liam_game/pages/game/application/game_manager.dart';
 import 'package:liam_game/theme/colors.dart';
 import 'package:liam_game/widgets/app_padding.dart';
 import 'package:liam_game/widgets/app_text.dart';
 
-class GameHeader extends StatelessWidget {
-  const GameHeader({super.key, this.gameDuration});
-
-  final Duration? gameDuration;
+class GameHeader extends ConsumerWidget {
+  const GameHeader({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final gameManager = ref.read(gameManagerNotifierProvider);
+
     return AppPadding(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,18 +28,14 @@ class GameHeader extends StatelessWidget {
             ),
           ),
           TimeText(
-            duration: gameDuration ?? 25.seconds,
-            onFinished: () {}, //=>_goToEndGamePage(context),
+            duration: gameManager.currentGame?.duration ?? 5.seconds,
+            onFinished: () {
+              ref.read(gameManagerNotifierProvider.notifier).end();
+            },
           ),
         ],
       ),
     );
-  }
-
-  _goToEndGamePage(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (_) => const EndGameScreen(),
-    ));
   }
 }
 

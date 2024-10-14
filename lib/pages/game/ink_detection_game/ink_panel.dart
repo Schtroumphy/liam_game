@@ -26,7 +26,7 @@ class _InkPanelState extends State<InkPanel> {
   final languages = ['en', 'fr'];
 
   List<Word> _futureWords = [];
-  Word? _currentWord = null;
+  Word? _currentWord;
   bool _display = false;
   bool _isGoodAnswer = false;
 

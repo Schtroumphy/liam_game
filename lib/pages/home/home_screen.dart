@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:liam_game/core/extensions/build_context_extension.dart';
 import 'package:liam_game/core/extensions/string_extensions.dart';
+import 'package:liam_game/pages/game/application/game_manager.dart';
 import 'package:liam_game/pages/game/game_screen.dart';
 import 'package:liam_game/pages/home/widgets/game_carousel.dart';
 import 'package:liam_game/pages/home/widgets/home_header.dart';
@@ -8,14 +10,14 @@ import 'package:liam_game/theme/colors.dart';
 import 'package:liam_game/widgets/app_text.dart';
 import 'package:liam_game/widgets/button_icon.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   bool _isAvailable = true;
 
   @override
@@ -83,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   _goToGamePage() {
+    ref.read(gameManagerNotifierProvider.notifier).start(InkDetectionGame());
     Navigator.of(context).push(MaterialPageRoute(
       builder: (_) => const GameScreen(),
     ));
