@@ -1,28 +1,26 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart' hide Ink;
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
 import 'package:liam_game/core/extensions/int_extension.dart';
 import 'package:liam_game/core/extensions/num_extension.dart';
 import 'package:liam_game/core/extensions/string_extensions.dart';
-import 'package:liam_game/pages/game/model/word.dart';
-import 'package:liam_game/pages/game/widgets/activity_indicator.dart';
+import 'package:liam_game/pages/game/ink_detection_game/model/word.dart';
 import 'package:liam_game/pages/game/widgets/message_box.dart';
 import 'package:liam_game/pages/game/widgets/rounded_colored_text.dart';
 import 'package:liam_game/theme/colors.dart';
 import 'package:liam_game/widgets/app_padding.dart';
 import 'package:liam_game/widgets/button_icon.dart';
 
-class InkPanel extends StatefulWidget {
+class InkPanel extends ConsumerStatefulWidget {
   const InkPanel({super.key});
 
   @override
-  State<InkPanel> createState() => _InkPanelState();
+  ConsumerState<InkPanel> createState() => _InkPanelState();
 }
 
-class _InkPanelState extends State<InkPanel> {
-  final DigitalInkRecognizerModelManager _modelManager = DigitalInkRecognizerModelManager();
-  final _language = 'en';
+class _InkPanelState extends ConsumerState<InkPanel> {
   final languages = ['en', 'fr'];
 
   List<Word> _futureWords = [];
@@ -61,7 +59,7 @@ class _InkPanelState extends State<InkPanel> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await _downloadModel();
+      //await ref.read(gameManagerNotifierProvider.notifier).init();
       _futureWords = await Word.loadWords();
       _currentWord = _futureWords.where((e) => e.level == 1).toList()[Random().nextInt(30)];
     });
@@ -157,10 +155,6 @@ class _InkPanelState extends State<InkPanel> {
         1.flex
       ],
     );
-  }
-
-  Future<void> _downloadModel() async {
-    Toast().show('Downloading model...', _modelManager.downloadModel(_language).then((value) => value ? 'success' : 'failed'), context, this);
   }
 
   _recogniseText() async {

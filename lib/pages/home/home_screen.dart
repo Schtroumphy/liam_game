@@ -4,6 +4,7 @@ import 'package:liam_game/core/extensions/build_context_extension.dart';
 import 'package:liam_game/core/extensions/string_extensions.dart';
 import 'package:liam_game/pages/game/application/game_manager.dart';
 import 'package:liam_game/pages/game/game_screen.dart';
+import 'package:liam_game/pages/game/models/game.dart';
 import 'package:liam_game/pages/home/widgets/game_carousel.dart';
 import 'package:liam_game/pages/home/widgets/home_header.dart';
 import 'package:liam_game/theme/colors.dart';
@@ -84,10 +85,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  _goToGamePage() {
-    ref.read(gameManagerNotifierProvider.notifier).start(InkDetectionGame());
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (_) => const GameScreen(),
-    ));
+  _goToGamePage() async {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => const GameScreen(),
+      ),
+    );
+    await ref.read(gameManagerNotifierProvider.notifier).start(InkDetectionGame());
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:liam_game/core/extensions/string_extensions.dart';
 import 'package:liam_game/pages/game/application/game_manager.dart';
 import 'package:liam_game/pages/game/end_game_screen.dart';
+import 'package:liam_game/pages/game/models/game.dart';
 import 'package:liam_game/pages/game/widgets/game_header.dart';
 import 'package:liam_game/pages/game/ink_detection_game/ink_panel.dart';
 import 'package:liam_game/pages/home/widgets/home_header.dart';
@@ -31,7 +32,7 @@ class GameScreen extends ConsumerWidget {
         GameStatus.notStarted => Center(
             child: Text('Game is not started yet'.hardcoded),
           ),
-        GameStatus.loading => const CircularProgressIndicator(),
+        GameStatus.loading => const Center(child: CircularProgressIndicator()),
         GameStatus.started => const GameStartedScreen(),
         GameStatus.paused => Text('Game not started'.hardcoded),
         GameStatus.finished => const EndGameScreen(),
