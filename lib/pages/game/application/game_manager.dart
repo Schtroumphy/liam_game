@@ -17,7 +17,7 @@ class GameManagerNotifier extends _$GameManagerNotifier {
 
   }
   start() async {
-    state = state.copyWith(status: GameStatus.started);
+    state = state.copyWith(status: GameStatus.started, score: 0);
     print('State is now: ${state.status}');
   }
 

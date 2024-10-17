@@ -42,13 +42,13 @@ class _InkPanelState extends ConsumerState<InkPanel> {
     });
   }
 
-  displayResult(bool isGood){
+  displayResult(bool isGood) {
     setState(() {
       _display = true;
       _isGoodAnswer = isGood;
-      if(isGood) {
+      if (isGood) {
         widget.addScore(_currentWord?.enWord.length ?? 0);
-        _currentWord = _futureWords.where((e) => e.level == 1).toList()[Random().nextInt(30)];
+        _currentWord = _getNewWord;
         Future.delayed(3.seconds, () {
           _display = false;
         });
@@ -57,13 +57,17 @@ class _InkPanelState extends ConsumerState<InkPanel> {
     });
   }
 
+  Word get _getNewWord => _futureWords[Random().nextInt(64)];
+
   @override
   void initState() {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       _futureWords = await Word.loadWords();
-      _currentWord = _futureWords.where((e) => e.level == 1).toList()[Random().nextInt(30)];
+      setState(() {
+        _currentWord = _getNewWord;
+      });
     });
   }
 
@@ -104,7 +108,7 @@ class _InkPanelState extends ConsumerState<InkPanel> {
                             y: localPosition.dy,
                             t: DateTime.now().millisecondsSinceEpoch,
                           ));
-                                              if (_ink.strokes.isNotEmpty) {
+                        if (_ink.strokes.isNotEmpty) {
                           _ink.strokes.last.points = _points.toList();
                         }
                       });
@@ -139,9 +143,7 @@ class _InkPanelState extends ConsumerState<InkPanel> {
               child: const Icon(Icons.check),
             ),
             IconButton(
-              onPressed: () => {
-                setCurrentWord(_futureWords.where((e) => e.level == 1).toList()[Random().nextInt(30)])
-              },
+              onPressed: () => {setCurrentWord(_futureWords.where((e) => e.level == 1).toList()[Random().nextInt(30)])},
               icon: const Icon(Icons.arrow_forward),
             ),
           ],
@@ -170,7 +172,7 @@ class _InkPanelState extends ConsumerState<InkPanel> {
         _recognizedText += '$candidate ,';
       }
       print('Recognized text : $_recognizedText');
-      if(candidates.contains(_currentWord?.enWord)){
+      if (candidates.contains(_currentWord?.enWord)) {
         displayResult(true);
       } else {
         displayResult(false);

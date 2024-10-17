@@ -63,7 +63,11 @@ final class InkDetectionGame implements Game<List<Word>> {
   List<Word>? get data => null;
 
   Future<void> _downloadModel() async {
-    _modelManager.downloadModel('en').then((value) => print('Model downloaded ? ${value ? 'success' : 'failed'}'));
+    final isDownloaded = await _modelManager.isModelDownloaded('en');
+
+    if(!isDownloaded) {
+      _modelManager.downloadModel('en').then((value) => print('Model downloaded ? ${value ? 'success' : 'failed'}'));
+    }
   }
 
   @override
