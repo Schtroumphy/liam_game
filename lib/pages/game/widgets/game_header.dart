@@ -15,17 +15,23 @@ class GameHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final gameManager = ref.read(gameManagerNotifierProvider);
+    final gameManager = ref.watch(gameManagerNotifierProvider);
 
     return AppPadding(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          AppText(
-            '0 pts'.hardcoded,
-            style: context.textTheme.labelLarge?.copyWith(
-              color: AppColors.primaryBlack,
-            ),
+          TweenAnimationBuilder<int>(
+            tween: IntTween(begin: 0, end: gameManager.score),
+            duration: 400.milliseconds,
+            builder: (context, value, child) {
+              return AppText(
+                '$value pts'.hardcoded,
+                style: context.textTheme.labelLarge?.copyWith(
+                  color: AppColors.primaryBlack,
+                ),
+              );
+            },
           ),
           TimeText(
             duration: gameManager.currentGame?.duration ?? 5.seconds,

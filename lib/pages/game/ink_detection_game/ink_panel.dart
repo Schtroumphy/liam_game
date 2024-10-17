@@ -14,7 +14,9 @@ import 'package:liam_game/widgets/app_padding.dart';
 import 'package:liam_game/widgets/button_icon.dart';
 
 class InkPanel extends ConsumerStatefulWidget {
-  const InkPanel({super.key});
+  const InkPanel({super.key, required this.addScore});
+
+  final Function(int) addScore;
 
   @override
   ConsumerState<InkPanel> createState() => _InkPanelState();
@@ -45,6 +47,7 @@ class _InkPanelState extends ConsumerState<InkPanel> {
       _display = true;
       _isGoodAnswer = isGood;
       if(isGood) {
+        widget.addScore(_currentWord?.enWord.length ?? 0);
         _currentWord = _futureWords.where((e) => e.level == 1).toList()[Random().nextInt(30)];
         Future.delayed(3.seconds, () {
           _display = false;

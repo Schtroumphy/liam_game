@@ -104,11 +104,11 @@ class GameInitScreen extends ConsumerWidget {
   }
 }
 
-class GameStartedScreen extends StatelessWidget {
+class GameStartedScreen extends ConsumerWidget {
   const GameStartedScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -118,12 +118,14 @@ class GameStartedScreen extends StatelessWidget {
           alignment: AlignmentDirectional.topStart,
         ),
       ),
-      child: const SafeArea(
+      child: SafeArea(
         child: Column(
           children: [
-            GameHeader(),
+            const GameHeader(),
             Expanded(
-              child: InkPanel(),
+              child: InkPanel(addScore: (score) {
+                ref.read(gameManagerNotifierProvider.notifier).addScore(score);
+              },),
             ),
           ],
         ),

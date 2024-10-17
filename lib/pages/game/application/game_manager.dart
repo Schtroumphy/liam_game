@@ -21,8 +21,14 @@ class GameManagerNotifier extends _$GameManagerNotifier {
     print('State is now: ${state.status}');
   }
 
+  addScore(int scoreToAdd) {
+    state = state.copyWith(
+      score: state.score + scoreToAdd,
+    );
+  }
+
   end() {
-    state = GameManager(status: GameStatus.finished, currentGame: null);
+    state = state.copyWith(status: GameStatus.finished, currentGame: null);
   }
 
   pause() {
@@ -33,16 +39,19 @@ class GameManagerNotifier extends _$GameManagerNotifier {
 final class GameManager {
   final GameStatus status;
   final Game? currentGame;
+  final int score;
 
-  GameManager({required this.status, this.currentGame});
+  GameManager({required this.status, this.currentGame, this.score = 0,});
 
   GameManager copyWith({
     GameStatus? status,
     Game? currentGame,
+    int? score,
   }) {
     return GameManager(
       status: status ?? this.status,
       currentGame: this.currentGame ?? currentGame,
+      score: score ?? this.score,
     );
   }
 }
