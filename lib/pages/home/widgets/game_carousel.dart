@@ -18,12 +18,17 @@ class GameCarousel extends StatefulWidget {
 
 class _GameCarouselState extends State<GameCarousel> {
   late PageController _pageController;
-  final int _currentPage = (games.length / 2).floor();
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: _currentPage, viewportFraction: 0.8);
+    final int currentPage = (games.length / 2).floor();
+    _pageController = PageController(initialPage: currentPage, viewportFraction: 0.8);
+
+    // Force reconstruction to have pageController initialized and seed card transformation
+    Future.delayed(100.milliseconds, () {
+      setState(() {});
+    });
   }
 
   @override
@@ -48,8 +53,9 @@ class _GameCarouselState extends State<GameCarousel> {
               animation: _pageController,
               builder: (context, child) {
                 double value = 0.0;
-                if (_pageController.position.haveDimensions) {
-                  value = index.toDouble() - (_pageController.page ?? 0);
+                if (_pageController.hasClients && _pageController.position.haveDimensions) {
+                  //value = index.toDouble() - (_pageController.page ?? 0);
+                  value = index.toDouble() - (_pageController.page ?? _pageController.initialPage.toDouble());
                   value = (value * 0.098).clamp(-1, 1);
                 }
                 return Transform.rotate(
