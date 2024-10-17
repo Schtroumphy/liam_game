@@ -95,17 +95,14 @@ class _InkPanelState extends ConsumerState<InkPanel> {
                     },
                     onPanUpdate: (DragUpdateDetails details) {
                       setState(() {
-                        final RenderObject? object = context.findRenderObject();
-                        final localPosition = (object as RenderBox?)?.globalToLocal(details.localPosition);
-                        if (localPosition != null) {
-                          _points = List.from(_points)
-                            ..add(StrokePoint(
-                              x: localPosition.dx,
-                              y: localPosition.dy,
-                              t: DateTime.now().millisecondsSinceEpoch,
-                            ));
-                        }
-                        if (_ink.strokes.isNotEmpty) {
+                        final localPosition = details.localPosition;
+                        _points = List.from(_points)
+                          ..add(StrokePoint(
+                            x: localPosition.dx,
+                            y: localPosition.dy,
+                            t: DateTime.now().millisecondsSinceEpoch,
+                          ));
+                                              if (_ink.strokes.isNotEmpty) {
                           _ink.strokes.last.points = _points.toList();
                         }
                       });
