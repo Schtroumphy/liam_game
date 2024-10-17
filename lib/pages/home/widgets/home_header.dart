@@ -16,11 +16,13 @@ class AppHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ColoredBox(
-            color: AppColors.white,
-            child: AppText(
-              title ?? 'Welcome back, Axel 👋',
-              style: context.textTheme.labelLarge?.copyWith(color: AppColors.primaryBlack, fontWeight: FontWeight.normal),
+          Expanded(
+            child: ColoredBox(
+              color: AppColors.white,
+              child: AppText(
+                title ?? 'Welcome back, Axel 👋',
+                style: context.textTheme.labelLarge?.copyWith(color: AppColors.primaryBlack, fontWeight: FontWeight.normal),
+              ),
             ),
           ),
           Icon(icon ?? Icons.settings)

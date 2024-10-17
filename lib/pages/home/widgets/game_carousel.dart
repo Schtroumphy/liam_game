@@ -35,7 +35,7 @@ class _GameCarouselState extends State<GameCarousel> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 1.2,
+      aspectRatio: 1.1,
       child: PageView.builder(
         itemCount: games.length,
         controller: _pageController,
@@ -50,7 +50,7 @@ class _GameCarouselState extends State<GameCarousel> {
                 double value = 0.0;
                 if (_pageController.position.haveDimensions) {
                   value = index.toDouble() - (_pageController.page ?? 0);
-                  value = (value * 0.038).clamp(-1, 1);
+                  value = (value * 0.098).clamp(-1, 1);
                 }
                 return Transform.rotate(
                   angle: pi * value,

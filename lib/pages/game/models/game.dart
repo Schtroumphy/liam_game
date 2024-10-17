@@ -46,7 +46,7 @@ final class InkDetectionGame implements Game<List<Word>> {
   String get name => 'Ink Detection'.hardcoded;
 
   @override
-  Duration get duration => 10.seconds;
+  Duration get duration => 1.minutes;
 
   @override
   GameType get type => GameType.aiBased;

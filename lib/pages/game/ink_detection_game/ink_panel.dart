@@ -59,7 +59,6 @@ class _InkPanelState extends ConsumerState<InkPanel> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      //await ref.read(gameManagerNotifierProvider.notifier).init();
       _futureWords = await Word.loadWords();
       _currentWord = _futureWords.where((e) => e.level == 1).toList()[Random().nextInt(30)];
     });

@@ -11,6 +11,8 @@ class CarouselNavigationButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned.fill(
+      left: alignment == Alignment.centerLeft ? -12 : 0,
+      right: alignment == Alignment.centerLeft ? 0 : -12,
       child: Align(
         alignment: alignment ?? Alignment.centerRight,
         child: ElevatedButton(
@@ -19,8 +21,9 @@ class CarouselNavigationButton extends StatelessWidget {
             foregroundColor: Colors.black,
             backgroundColor: AppColors.white,
             shape: const CircleBorder(side: BorderSide(width: 2, color: AppColors.lightOrange)),
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.zero,
             shadowColor: AppColors.primaryBlack,
+            elevation: 3
           ),
           child: Icon(iconData ?? Icons.arrow_forward_ios, color: AppColors.primaryBlack),
         ),

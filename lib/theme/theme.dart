@@ -10,20 +10,20 @@ final themeData = ThemeData(
     fontFamily: 'InstrumentSans',
     textTheme: const TextTheme(
       displayLarge: TextStyle(
-        fontSize: 72,
+        fontSize: 64,
         fontWeight: FontWeight.bold,
       ),
       titleMedium: TextStyle(
-        fontSize: 28,
+        fontSize: 22,
         fontWeight: FontWeight.w700,
         color: AppColors.primaryBlack,
       ),
       labelLarge: TextStyle(
-        fontSize: 24,
+        fontSize: 18,
         fontWeight: FontWeight.w600,
       ),
       labelMedium: TextStyle(
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: FontWeight.w500,
         color: AppColors.white
       ),
@@ -54,5 +54,5 @@ final themeData = ThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-      ),
+      )
     ));

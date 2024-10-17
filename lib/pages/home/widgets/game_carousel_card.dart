@@ -21,7 +21,7 @@ class GameCarouselCard extends StatelessWidget {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
           child: Container(
             decoration: BoxDecoration(color: game.isAvailable ? AppColors.orange : AppColors.grey, borderRadius: BorderRadius.circular(25)),
             child: AppPadding(
@@ -29,8 +29,8 @@ class GameCarouselCard extends StatelessWidget {
                 children: [
                   Image.asset(
                     game.imagePath ?? 'assets/images.pencil.png'.hardcoded,
-                    width: 90,
-                    height: 90,
+                    width: 60,
+                    height: 60,
                   ),
                   AppText(
                     game.name,
@@ -42,7 +42,7 @@ class GameCarouselCard extends StatelessWidget {
                   Align(
                     alignment: AlignmentDirectional.centerEnd,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
                       child: Container(
                         height: 2,
                         width: 100,
