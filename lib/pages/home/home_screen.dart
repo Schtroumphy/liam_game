@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:liam_game/core/extensions/build_context_extension.dart';
+import 'package:liam_game/core/extensions/int_extension.dart';
 import 'package:liam_game/core/extensions/string_extensions.dart';
 import 'package:liam_game/pages/game/application/game_manager.dart';
 import 'package:liam_game/pages/game/game_screen.dart';
@@ -66,7 +67,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 _isAvailable = game.isAvailable;
               });
             }),
-            const Spacer(flex: 1),
+            1.flex,
             Align(
               alignment: Alignment.center,
               child: ButtonIcon(
@@ -78,7 +79,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
               ),
             ),
-            const Spacer(flex: 1),
+            1.flex,
           ],
         ),
       ),
@@ -91,6 +92,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         builder: (_) => const GameScreen(),
       ),
     );
-    await ref.read(gameManagerNotifierProvider.notifier).start(InkDetectionGame());
+    await ref.read(gameManagerNotifierProvider.notifier).init(InkDetectionGame());
   }
 }

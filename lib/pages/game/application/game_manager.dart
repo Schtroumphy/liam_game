@@ -10,12 +10,14 @@ class GameManagerNotifier extends _$GameManagerNotifier {
     return GameManager(status: GameStatus.notStarted, currentGame: null);
   }
 
-  start(Game game) async {
+  init(Game game) async {
     state = state.copyWith(status: GameStatus.loading, currentGame: game);
     print('State is now: ${state.status}');
-
     await state.currentGame?.init;
-    state = GameManager(status: GameStatus.started, currentGame: game);
+
+  }
+  start() async {
+    state = state.copyWith(status: GameStatus.started);
     print('State is now: ${state.status}');
   }
 
@@ -24,15 +26,7 @@ class GameManagerNotifier extends _$GameManagerNotifier {
   }
 
   pause() {
-    state = GameManager(status: GameStatus.paused, currentGame: state.currentGame);
-  }
-
-  init() async  {
-    if (state.currentGame != null) {
-      state = state.copyWith(status: GameStatus.loading);
-      await state.currentGame?.init;
-      state = state.copyWith(status: GameStatus.started);
-    }
+    state = GameManager(status: GameStatus.paused);
   }
 }
 

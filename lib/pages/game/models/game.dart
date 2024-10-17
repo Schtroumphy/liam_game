@@ -19,14 +19,20 @@ enum GameType {
 
 sealed class Game<T> {
   final String name;
+  final String assetPath;
+  final String shortDescription;
+  final String description;
   final Duration duration;
   final GameType type;
   final Future<VoidCallback?> init;
   final T? data;
 
   Game(
-    this.name,
-    this.data, {
+    this.name, {
+    this.data,
+    required this.assetPath,
+    required this.shortDescription,
+    required this.description,
     required this.duration,
     required this.type,
     required this.init,
@@ -59,4 +65,22 @@ final class InkDetectionGame implements Game<List<Word>> {
   Future<void> _downloadModel() async {
     _modelManager.downloadModel('en').then((value) => print('Model downloaded ? ${value ? 'success' : 'failed'}'));
   }
+
+  @override
+  String get description => '''
+    In this game, you'll be given a French word, and your task is to translate it into English and write it on the board. Once you're done, check your answer. 
+    If you're unsure of the translation, you can skip to the next word. Made a mistake? No worries—you can erase the board and try again.
+  
+    Good luck! You only have a limited time, so aim for the highest score you can before the clock runs out.
+  '''
+      .hardcoded;
+
+  @override
+  String get shortDescription => '''
+    Can you translate as many French words as possible before time runs out? 
+    Test your skills and aim for the highest score!
+  ''';
+
+  @override
+  String get assetPath => 'assets/images/pencil.png';
 }
