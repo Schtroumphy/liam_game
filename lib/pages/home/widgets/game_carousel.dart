@@ -54,8 +54,7 @@ class _GameCarouselState extends State<GameCarousel> {
               builder: (context, child) {
                 double value = 0.0;
                 if (_pageController.hasClients && _pageController.position.haveDimensions) {
-                  //value = index.toDouble() - (_pageController.page ?? 0);
-                  value = index.toDouble() - (_pageController.page ?? _pageController.initialPage.toDouble());
+                  value = index.toDouble() - (_pageController.page ?? 0);
                   value = (value * 0.098).clamp(-1, 1);
                 }
                 return Transform.rotate(
