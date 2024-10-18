@@ -32,14 +32,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final pagesCount = models.length;
+    final pagesCount = models.length + 1; // Add avatar page
 
     return PageView.builder(
       controller: _pageController,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: pagesCount,
       onPageChanged: (index) => changePage(index),
-      itemBuilder: (_, index) => OnBoardingContent(
+      itemBuilder: (_, index) => OnBoardingPage(
         currentIndex: _currentPage,
         model: models[_currentPage],
         onNextCLick: () => _nextPage(_pageController, _currentPage, pagesCount, context),
@@ -67,8 +67,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   }
 }
 
-class OnBoardingContent extends StatelessWidget {
-  const OnBoardingContent({super.key, required this.currentIndex, required this.model, this.onNextCLick, this.onSkipClick});
+class OnBoardingPage extends StatelessWidget {
+  const OnBoardingPage({super.key, required this.currentIndex, required this.model, this.onNextCLick, this.onSkipClick});
 
   final int currentIndex;
   final OnBoardingDataModel model;
@@ -78,7 +78,6 @@ class OnBoardingContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
       appBar: PreferredSize(
@@ -89,32 +88,107 @@ class OnBoardingContent extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Spacer(flex: 1),
-            SizedBox(
-              width: size.width * 0.6,
-              child: Text(
-                model.title,
-                style: textTheme.titleMedium,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const Spacer(flex: 1),
-            ScrollingChips(labels: model.labels, reversed: false),
-            ScrollingChips(
-              labels: model.labels,
-              reversed: true,
-            ),
-            const Spacer(flex: 7),
-          ],
-        ),
-      ),
+          child: currentIndex == 0
+              ? const OBSetPlayerContent()
+              : OBChipsContent(
+                  model: model,
+                )),
       bottomNavigationBar: BottomButtonsNavigation(
         onNextClick: onNextCLick,
         onSkipClick: onSkipClick,
         canSkip: currentIndex != 0,
+      ),
+    );
+  }
+}
+
+class OBChipsContent extends StatelessWidget {
+  const OBChipsContent({super.key, required this.model});
+
+  final OnBoardingDataModel model;
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
+    final textTheme = Theme.of(context).textTheme;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Spacer(flex: 1),
+        SizedBox(
+          width: size.width * 0.6,
+          child: Text(
+            model.title,
+            style: textTheme.titleMedium,
+            textAlign: TextAlign.center,
+          ),
+        ),
+        const Spacer(flex: 1),
+        ScrollingChips(labels: model.labels, reversed: false),
+        ScrollingChips(
+          labels: model.labels,
+          reversed: true,
+        ),
+        const Spacer(flex: 7),
+      ],
+    );
+  }
+}
+
+class OBSetPlayerContent extends StatelessWidget {
+  const OBSetPlayerContent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
+    final textTheme = Theme.of(context).textTheme;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Spacer(flex: 1),
+        SizedBox(
+          width: size.width * 0.6,
+          child: Text(
+            'Choose your avatar 🤟 !',
+            style: textTheme.titleMedium,
+            textAlign: TextAlign.center,
+          ),
+        ),
+        const Spacer(flex: 1),
+        const AvatarCarousel(),
+        const Spacer(flex: 7),
+      ],
+    );
+  }
+}
+
+const images = [
+  'avatar_1.png',
+  'avatar_2.png',
+  'avatar_3.png',
+  'avatar_4.png',
+];
+
+class AvatarCarousel extends StatelessWidget {
+  const AvatarCarousel({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxHeight: 200),
+      child: CarouselView(
+        itemExtent: 330,
+        shrinkExtent: 200,
+        padding: const EdgeInsets.all(10.0),
+        children: List.generate(
+          images.length,
+          (index) => Image.asset(
+            "images/${images[index]}",
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }
