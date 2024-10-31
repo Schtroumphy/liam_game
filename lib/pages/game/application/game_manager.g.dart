@@ -7,7 +7,7 @@ part of 'game_manager.dart';
 // **************************************************************************
 
 String _$gameManagerNotifierHash() =>
-    r'ad91c93960d0257f082bdd3688a5034375a27052';
+    r'95945cb75b959419e50e9114ecb742a4e672555c';
 
 /// See also [GameManagerNotifier].
 @ProviderFor(GameManagerNotifier)
